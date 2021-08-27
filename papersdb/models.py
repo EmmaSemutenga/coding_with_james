@@ -1,8 +1,6 @@
 from django.db import models
 
 # Create your models here.
-<<<<<<< HEAD
-=======
 # Papers Database
 
 # Problem Statement:
@@ -22,4 +20,3 @@ from django.db import models
 
 # (1) A database of papers.
 # (2) 
->>>>>>> 467ee4cb868d575b80222207bf7d71e75101a6f1
