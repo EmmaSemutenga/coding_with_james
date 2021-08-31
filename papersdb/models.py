@@ -11,8 +11,8 @@ from django.db import models
 
 
 # Author(s)
-# Date of publication
-# Title
+# 
+# 
 # Categories (paper, book, essay)
 # Link ()
 # Keywords/Tags/ (ed-tech, sci-fi, )
@@ -20,3 +20,15 @@ from django.db import models
 
 # (1) A database of papers.
 # (2) 
+
+class Paper(models.Model):
+    title = models.CharField(max_length=200)
+    publication_date = models.CharField(max_length=200)
+    CATEGORIES_CHOICES = (
+        ('paper', 'paper'),
+        ('book', 'book'),
+        ('essay', 'essay'),
+    )
+    categories = models.CharField(max_length=10, choices=CATEGORIES_CHOICES, default='paper')
+    
+
