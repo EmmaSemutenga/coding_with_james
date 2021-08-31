@@ -39,10 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-<<<<<<< HEAD
-    # Local apps
-=======
->>>>>>> 467ee4cb868d575b80222207bf7d71e75101a6f1
     'papersdb.apps.PapersdbConfig',
 ]
 
