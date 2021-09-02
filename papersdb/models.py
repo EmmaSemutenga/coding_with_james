@@ -11,9 +11,6 @@ from django.db import models
 
 
 # Author(s)
-# 
-# 
-# Categories (paper, book, essay)
 # Link ()
 # Keywords/Tags/ (ed-tech, sci-fi, )
 # Short description / notes
@@ -30,5 +27,16 @@ class Paper(models.Model):
         ('essay', 'essay'),
     )
     categories = models.CharField(max_length=10, choices=CATEGORIES_CHOICES, default='paper')
+    link = models.URLField(blank=True, null=True)
+    KEYWORD_CHOICES = (
+        ('ed-tech', 'ed-tech'),
+        ('sci-fi', 'sci-fi'),
+    )
+    keyword = models.CharField(max_length=10, choices=KEYWORD_CHOICES, default='ed-tech')
+    notes = models.TextField(blank=True, null=True)
+
+
+    def __str__(self):
+        return self.title
     
 
