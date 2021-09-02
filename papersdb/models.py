@@ -18,8 +18,16 @@ from django.db import models
 # (1) A database of papers.
 # (2) 
 
+class Author(models.Model):
+    name = models.CharField(max_length=30)
+
+    def __str__(self) -> str:
+        return self.name
+
+
 class Paper(models.Model):
     title = models.CharField(max_length=200)
+    authors = models.ManyToManyField(Author)
     publication_date = models.CharField(max_length=200)
     CATEGORIES_CHOICES = (
         ('paper', 'paper'),
