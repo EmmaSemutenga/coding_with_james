@@ -1,11 +1,11 @@
 from django.shortcuts import render
 from my_project import hobbies
+from .models import Paper
 
 # Create your views here.
 def home_page(request):
-    print(hobbies)
-    print(request.method) # We want to know what method is being used.
-    return render(request, 'index.html', {"name":"James From Brighton located in South England"})
+    papers = Paper.objects.all()
+    return render(request, 'index.html', {"james_papers":papers})
     # render() takes 3 arguments: the original request, the template name, and any other data you want to send to the template in the form of a dictionary.
 
 # GET

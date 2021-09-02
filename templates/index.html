@@ -8,6 +8,13 @@
 </head>
 <body>
     <h1>We are at the home page</h1>
-    <h2>{{ name }}</h2>
+    <ul>
+        {% for tom in james_paper %}
+        <li>{{ tom.title }}</li>
+        {% empty %}
+        <li>No Papers</li>
+        {% endfor %}
+    </ul>
+    
 </body>
 </html>
