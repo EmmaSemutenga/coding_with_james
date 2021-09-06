@@ -13,7 +13,7 @@
         <li>{{ paper.title }}</li>
         <li>
             <ul>
-                {% for author in paper.author_set.all %}
+                {% for author in paper.authors.all %}
                 <li>{{ author }}</li>
                 {% empty %} <!-- this is like an else statement -->
                 <li>No authors</li>
