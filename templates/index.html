@@ -9,10 +9,20 @@
 <body>
     <h1>We are at the home page</h1>
     <ul>
-        {% for tom in james_paper %}
-        <li>{{ tom.title }}</li>
+        {% for paper in james_paper %}
+        <li>{{ paper.title }}</li>
+        <li>{{ paper.author}}</li>
+        <li>{{ paper.publication_date}}</li>
         {% empty %}
-        <li>No Papers</li>
+        <li>No papers</li>
+        {% endfor %}
+    </ul>
+
+    <ul>
+        {% for paper in james_paper %}
+        <li>{{ paper.author }}</li>
+        {% empty %}
+        <li>No Authors</li>
         {% endfor %}
     </ul>
     

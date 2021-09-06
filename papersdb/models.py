@@ -27,20 +27,22 @@ class Author(models.Model):
 
 class Paper(models.Model):
     title = models.CharField(max_length=200)
-    authors = models.ManyToManyField(Author)
+    author = models.ManyToManyField(Author)
     publication_date = models.CharField(max_length=200)
     CATEGORIES_CHOICES = (
         ('paper', 'paper'),
         ('book', 'book'),
+        ('book_chapter', 'book_chapter'),
         ('essay', 'essay'),
     )
-    categories = models.CharField(max_length=10, choices=CATEGORIES_CHOICES, default='paper')
+    categories = models.CharField(max_length=20, choices=CATEGORIES_CHOICES, default='paper')
     link = models.URLField(blank=True, null=True)
     KEYWORD_CHOICES = (
         ('ed-tech', 'ed-tech'),
+        ('novel', 'novel'),
         ('sci-fi', 'sci-fi'),
     )
-    keyword = models.CharField(max_length=10, choices=KEYWORD_CHOICES, default='ed-tech')
+    keyword = models.CharField(max_length=20, choices=KEYWORD_CHOICES, default='ed-tech')
     notes = models.TextField(blank=True, null=True)
 
 
