@@ -21,13 +21,13 @@ from django.db import models
 class Author(models.Model):
     name = models.CharField(max_length=30)
 
-    def __str__(self) -> str:
+    def __str__(self) -> str: # This arrow is type hinting, it shows you what this method will return. You can delete it.
         return self.name
 
 
 class Paper(models.Model):
     title = models.CharField(max_length=200)
-    author = models.ManyToManyField(Author)
+    authors = models.ManyToManyField(Author)
     publication_date = models.CharField(max_length=200)
     CATEGORIES_CHOICES = (
         ('paper', 'paper'),

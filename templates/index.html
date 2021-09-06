@@ -9,22 +9,21 @@
 <body>
     <h1>We are at the home page</h1>
     <ul>
-        {% for paper in james_paper %}
+        {% for paper in james_papers %}
         <li>{{ paper.title }}</li>
-        <li>{{ paper.author}}</li>
+        <li>
+            <ul>
+                {% for author in paper.author_set.all %}
+                <li>{{ author }}</li>
+                {% empty %} <!-- this is like an else statement -->
+                <li>No authors</li>
+                {% endfor %}
+            </ul>
+        </li>
         <li>{{ paper.publication_date}}</li>
         {% empty %}
         <li>No papers</li>
         {% endfor %}
     </ul>
-
-    <ul>
-        {% for paper in james_paper %}
-        <li>{{ paper.author }}</li>
-        {% empty %}
-        <li>No Authors</li>
-        {% endfor %}
-    </ul>
-    
 </body>
 </html>
