@@ -15,6 +15,13 @@
             <ul>
                 {% for author in paper.authors.all %}
                 <li>{{ author }}</li>
+                <ul>
+                    {% for paper in author.paper_set.all %}
+                    <li>{{ paper }}</li>
+                    {% empty %}
+                    <li>No Authors</li>
+                    {% endfor%}
+                </ul>
                 {% empty %} <!-- this is like an else statement -->
                 <li>No authors</li>
                 {% endfor %}
