@@ -44,6 +44,7 @@ class Paper(models.Model):
     )
     keyword = models.CharField(max_length=20, choices=KEYWORD_CHOICES, default='ed-tech')
     notes = models.TextField(blank=True, null=True)
+    published = models.BooleanField(default=False)
 
 
     def __str__(self):

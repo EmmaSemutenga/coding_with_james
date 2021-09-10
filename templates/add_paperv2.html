@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" method="post">
+        {% csrf_token %}
+        <p>
+            <label for="">Title</label>
+            <input type="text" name="title">
+        </p>
+        <p>
+            <label for="">
+                {% for author in authors %}
+                <input type="checkbox" name="authors" value="{{author.id}}" >
+                {{author}}
+                {% empty %}
+                No Authors
+                {% endfor %}
+                </label>
+        </p>
+        <p>
+            <label for="">Publication Date</label>
+            <input type="text" name="publication_date">
+        </p>
+        <p>
+            <label for="id_categories">Categories:</label> <select name="categories" id="id_categories">
+                <option value="paper" selected>paper</option>
+              
+                <option value="book">book</option>
+              
+                <option value="book_chapter">book_chapter</option>
+              
+                <option value="essay">essay</option>
+              
+              </select>
+        </p>
+        <p>
+            <label for="id_link">Link:</label>
+            <input type="url" name="link" maxlength="200" id="id_link">
+        </p>
+        <p>
+            <label for="id_keyword">Keyword:</label> <select name="keyword" id="id_keyword">
+                <option value="ed-tech" selected>ed-tech</option>
+              
+                <option value="novel">novel</option>
+              
+                <option value="sci-fi">sci-fi</option>
+              
+              </select>
+        </p>
+        <p>
+            <label for="id_published">Published:</label> <input type="checkbox" name="published" id="id_published">
+        </p>
+        <p>
+            <input type="submit" value="Add Paper">
+        </p>
+        
+    </form>
+</body>
+</html>
