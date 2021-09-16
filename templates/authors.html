@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>List of Authors</h1>
+    <ul>
+        {% for author in james_authors %}
+            <li> <a href="{% url 'papersdb:author_detail' author.id %}">{{ author.name }}</a></li> <!--We added papersdb: here when we added app_name in urls.py -->
+            <!-- What you are saying above is, when you click on this link, you want to go to the author detail view, and author.id is actually an argument you want to send to the view.-->
+        {% endfor %}
+    </ul>
+</body>
+</html>
