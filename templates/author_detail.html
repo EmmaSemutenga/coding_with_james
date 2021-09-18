@@ -9,8 +9,7 @@
 <body>
     <h1>Author Details</h1>
     <h2>
-        {{ james_author_details.name }} <!-- You can have other attributes here. -->
-        <button>Edit author</button>
+        {{ james_author_details.name }} <!-- You can have other attributes here. If you don't have one, name is returned because that's what's returned from the __str__() method in models.py-->
     </h2>
 </body>
 </html>

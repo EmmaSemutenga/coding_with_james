@@ -1,5 +1,5 @@
 from django.shortcuts import redirect, render
-from my_project import hobbies
+from my_project import hobbies # delete ?
 from .models import Paper, Author
 from .forms import PaperForm
 
@@ -20,7 +20,7 @@ def add_author(request):
         Author.objects.create(name = author)
         return redirect('author_list_page') # This name is available to views.py from urls.py. return here can end the function if the if statement is True; if not the return on line 23 ends the function.
     #   print(request.POST["author_name"]) # print() is a Python function that will print to the terminal. This is often used for testing and debugging.                  
-    return render(request, 'add_author.html') # This is like the else case.
+    return render(request, 'add_author.html') # This is like an else case.
 
 def author_list(request):
     authors = Author.objects.all()
