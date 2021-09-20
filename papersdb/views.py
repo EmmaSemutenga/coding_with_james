@@ -40,3 +40,8 @@ def edit_author(request, id): # Here we receive a request and an id
         author.save()
         return redirect('papersdb:author_list_page')
     return render(request, 'edit_author.html', {"james_author_details":author}) # This will only run if the request is (e.g.) 'GET'.
+
+def delete_author(request, id):
+    author = Author.objects.get(id=id)
+    author.delete()
+    return redirect('papersdb:author_list_page')

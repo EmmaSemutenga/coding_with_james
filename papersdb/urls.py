@@ -12,4 +12,8 @@ urlpatterns = [
     path('list_of_authors/', views.author_list, name='author_list_page'),
     path('author_details/<int:id>/', views.author_detail, name='author_detail'), # The <> brackets say something dynamic will be coming in, with id being the primary key and int saying make it an integer.
     path('edit_author/<int:id>/', views.edit_author, name='edit_author'),
+    path('delete_author/<int:id>/', views.delete_author, name='delete_author'),
 ]
+
+
+
