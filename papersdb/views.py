@@ -1,3 +1,4 @@
+import papersdb
 from django.shortcuts import redirect, render
 from my_project import hobbies # delete ?
 from .models import Paper, Author
