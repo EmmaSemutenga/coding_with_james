@@ -18,7 +18,7 @@ def add_paper(request):
     return render(request, 'add_paper.html', {"james_form":form, "my_request": request.method, })
 
 def add_author(request):
-    form = AuthorForm()
+    form = AuthorForm() # an instance of a (form) class creating an object and assigned to the variable 'form'.
     if request.method == 'POST': # request is an object and method is one of the attributes it has. The data will be sent in the request object.
         form = AuthorForm(request.POST)
         if form.is_valid(): # We are checking the validity of form submitted on line 23
@@ -29,13 +29,18 @@ def add_author(request):
     return render(request, 'add_author.html', {"pineapple":form}) # This is like an else case.
 
 def edit_author(request, id): # Here we receive a request and an id
-    author = Author.objects.get(id=id)    
+    author = Author.objects.get(id=id) # Author is a (model) class; objects is an attribute of Author; get is a method.
+    form_get = AuthorForm(instance=author)
     if request.method == 'POST':
-        author_name = request.POST['author_name'] # We are getting the submitted value from the form (activated when the Edit Author button is clicked).
-        author.name = author_name # Here we update the name of the author object
-        author.save()
-        return redirect('papersdb:author_list_page')
-    return render(request, 'edit_author.html', {"james_author_details":author}) # This will only run if the request is (e.g.) 'GET'.
+        form_post = AuthorForm(request.POST, instance=author)
+        if form_post.is_valid():
+            # author_name = form_post.cleaned_data.get('author_name') Without Meta, we have to specify the link between the form and the database, so we need this line and the 2 lines below.
+            # author.name = author_name
+            # author.save() # To save the whole object
+            form_post.save()
+            #author = form.cleaned_data.get('author_name') # We are getting the submitted value from the form (activated when the Edit Author button is clicked).
+            return redirect('papersdb:author_list_page') # Go back to the author list page after saving.
+    return render(request, 'edit_author.html', {"strawberry":form_get}) # This will only run if the request is (e.g.) 'GET'.
     
 def author_list(request):
     authors = Author.objects.all()
