@@ -9,6 +9,6 @@
 <body>
     <h1>Are you sure you want to delete {{ james_author_details }}?</h1> <!--This is the key.-->
     <button><a href="{% url 'papersdb:delete_author' james_author_details.id %}">Yes</a></button>
-    <button><a href="{% url 'papersdb:edit_author' james_author_details.id %}">No</a></button>
+    <button><a href="{% url 'papersdb:author_list_page' %}">No</a></button>
 </body>
 </html>

@@ -52,6 +52,10 @@ def author_detail(request, id):
     author = Author.objects.get(id=id) # The id on the left is the column you want to check. The first = here is an assignment in Python; but the second = is an equals in SQL (i.e. what would be == in Py.)
     return render(request, 'author_detail.html', {"james_author_details":author})
 
+def paper_detail(request, id): # The request and id objects are sent by the browser.
+    paper = Paper.objects.get(id=id)
+    return render(request, 'paper_detail.html', {"james_paper_details":paper}) # This is the response object that is sent back to the browser.
+
 def delete_author(request, id):
     author = Author.objects.get(id=id)
     author.delete()
@@ -61,3 +65,25 @@ def confirm_delete(request, id):
     author = Author.objects.get(id=id)
     return render(request, 'confirm_delete.html', {"james_author_details":author})
 
+def edit_paper(request, id): # Here we receive a request and an id
+    paper = Paper.objects.get(id=id) # Author is a (model) class; objects is an attribute of Author; get is a method.
+    form_get = PaperForm(instance=paper) # instance is a key word.
+    if request.method == 'POST':
+        form_post = PaperForm(request.POST, instance=paper)
+        if form_post.is_valid():
+            # author_name = form_post.cleaned_data.get('author_name') Without Meta, we have to specify the link between the form and the database, so we need this line and the 2 lines below.
+            # author.name = author_name
+            # author.save() # To save the whole object
+            form_post.save()
+            #author = form.cleaned_data.get('author_name') # We are getting the submitted value from the form (activated when the Edit Author button is clicked).
+            return redirect('papersdb:paper_list') # Go back to the author list page after saving.
+    return render(request, 'edit_paper.html', {"mango":form_get}) # This will only run if the request is (e.g.) 'GET'.
+
+def delete_paper(request, id):
+    paper = Paper.objects.get(id=id)
+    paper.delete()
+    return redirect('papersdb:paper_list')
+
+def confirm_delete_paper(request, id):
+    paper = Paper.objects.get(id=id)
+    return render(request, 'confirm_delete_paper.html', {"james_paper_details":paper})

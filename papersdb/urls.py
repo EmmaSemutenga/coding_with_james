@@ -1,12 +1,14 @@
 from django.urls import path
 # from papersdb.views import home_page, add_paper, add_author, author_list
-from . import views # . here is the current directory, which is papersdb, and here we import the whole views module.
+from . import views
+import papersdb # . here is the current directory, which is papersdb, and here we import the whole views module.
 
 app_name = 'papersdb' # We add this here because if you end up with e.g. 10 apps in a project, naming paths can get messy and you can unwillingly double
 # up. This is called URL NAME SPACING. You need to add papersdb: to the front of any names from URLpatterns in views.py if they are in direct().
 
 urlpatterns = [
     path('', views.home_page, name='home_page'),
+    path('paper_detail/<int:id>/', views.paper_detail, name='paper_detail'),
     path('paper_list/', views.paper_list, name='paper_list'),
     path('my_paper/', views.add_paper), # We need to add views. here if you use line 3 above instead of line 2.
     path('author/', views.add_author), # The first argument here is the address in the url/address bar which links to this. If this is matched the view is called.
@@ -15,6 +17,9 @@ urlpatterns = [
     path('edit_author/<int:id>/', views.edit_author, name='edit_author'),
     path('delete_author/<int:id>/', views.delete_author, name='delete_author'),
     path('confirm_delete/<int:id>/', views.confirm_delete, name='confirm_delete'),
+    path('edit_paper/<int:id>/', views.edit_paper, name='edit_paper'),
+    path('delete_paper/<int:id>/', views.delete_paper, name='delete_paper'),
+    path('confirm_delete_paper/<int:id>/', views.confirm_delete_paper, name='confirm_delete_paper'),
 ]
 
 
