@@ -14,34 +14,10 @@
             <h1>We are at the home page</h1>
             <ul>
                 {% for paper in james_papers %}
-                <li>{{ paper.title }}</li>
-                <li>
-                    <ul>
-                        {% for author in paper.authors.all %}
-                        <li>{{ author }}</li>
-                        <ul>
-                            {% for paper in author.paper_set.all %}
-                            <li>{{ paper }}</li>
-                            {% empty %}
-                            <li>No Papers</li>
-                            {% endfor %}
-                        </ul>
-                        {% empty %} <!-- this is like an else statement -->
-                        <li>No authors</li>
-                        {% endfor %}
-                    </ul>
-                </li>
-                <li>{{ paper.publication_date}}</li>
-                {% empty %}
-                <li>No papers</li>
+                    <li><a href="{% url 'papersdb:paper_detail' paper.id %}">{{ paper.title }}</a></li>
                 {% endfor %}
-            </ul>
         </div>
       
-    
-
-
-
 
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js" integrity="sha512-dqw6X88iGgZlTsONxZK9ePmJEFrmHwpuMrsUChjAw1mRUhUITE5QU9pkcSox+ynfLhL15Sv2al5A0LVyDCmtUw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

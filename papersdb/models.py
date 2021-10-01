@@ -24,7 +24,6 @@ class Author(models.Model):
     def __str__(self) -> str: # This arrow is type hinting, it shows you what this method will return. You can delete it.
         return self.name
 
-
 class Paper(models.Model):
     title = models.CharField(max_length=200)
     authors = models.ManyToManyField(Author)

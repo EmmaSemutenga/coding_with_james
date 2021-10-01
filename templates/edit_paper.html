@@ -7,14 +7,14 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Edit author</h1>
+    <h1>Edit paper</h1>
     <form action="" method="post">  
         {% csrf_token %} <!-- for security-->
         <!-- <input type="text" name="author_name"> author_name is the key and the value will be the input -->
-        {{ strawberry }}
+        {{ mango }}
         <!--The code on line 16 is for the long way.-->
         <!-- <input type="text" name="author_name" maxlength="50" required id="id_author_name" value="{{ apple.name }}"> -->
-        <input type="submit" value="Edit Author"> <!-- The value on the submit button is what is shown on the button. Every form must have a submit button.-->
+        <input type="submit" value="Edit Paper"> <!-- The value on the submit button is what is shown on the button. Every form must have a submit button.-->
     </form>
 </body>
 </html>
